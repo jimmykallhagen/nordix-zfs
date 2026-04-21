@@ -1,0 +1,14 @@
+# /etc/docker/daemon.json
+{
+  storage-driver: zfs,
+  storage-opts: [
+    zfs.fsname=pool/docker
+  ],
+  default-ulimits: {
+    nofile: {
+      Name: nofile,
+      Hard: 1048576,
+      Soft: 1048576
+    }
+  }
+}
