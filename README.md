@@ -17,6 +17,7 @@ Nordix ZFS configuration and documentation.
 | [**Docker on ZFS**](/docker-zfs/) | Docker ZFS integration |
 | [VM on ZFS](https://github.com/jimmykallhagen/nordix-vm/blob/main/README.md) | ZFS, ARC, Zvol, VM, theory | 
 | [Nordix ZFS Monitors](nordix-zfs-monitor.md) | Two differnt types of system monitors | 
+| [PRE-OpenZFS_2.2.0](PRE-OpenZFS_2.2.0-nordix-zfs-config)| Depricated nordix zfs setup |
 
 **Nordix - Illustration: Tux The Truth Bringer's Betrayal - "The Forbidden Power"**
 ![Forbidden-power](https://github.com/jimmykallhagen/nordix-fanart/blob/main/the-forbidden-power-ZFS/the-forbidden-power-4k.png)
