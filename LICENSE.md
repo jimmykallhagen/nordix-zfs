@@ -1,7 +1,3 @@
-<!--
-  This is a snippet to paste into your existing README.md.
-  Replace the old PolyForm license section with this content.
--->
 
 ## License
 
