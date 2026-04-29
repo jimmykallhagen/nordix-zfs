@@ -15,11 +15,26 @@ Instead I recommend using l2arc for hhd pools.
 
 If you already have your system on an nvme you can create a zvol and use it as a cache for HHD (l2arc).
 
+locate your drives and clean them first, be sure to get the right one otherwise it will be wrong.
+
+locate:
+```bash
+lslbk
+```
+Clean:
+```bash
+sudo wipefs -a --force /dev/sdX
+```
+
 ## Zpool create tank
 This will create a fast Stripe hhd pool, make sure your hhd is in good condition and that it is okay. 
 It will prepare options for the dataset you create later, so you don't have to specify options for each dataset if you don't want to.
-it is recomend to use disk by-id when you create a zpool
+it is recomend to use disk by-id when you create a zpool.
 
+An easy way to check this is to go to directory /dev/disk/by-id/
+and look for your current drive, copy it and use the full path in the zpool creation
+
+Create zpool:
 ```bash
 sudo zpool create -f -o ashift=12 \
 -o autotrim=on \
@@ -27,8 +42,8 @@ sudo zpool create -f -o ashift=12 \
 -O redundant_metadata=most \
 -O dnodesize=auto \
 -O mountpoint=none \
--O compression=zstd-fast-500
--O recordsize=64K \
+-O compression=zstd-fast-500 \
+-O recordsize=1M \
 -O atime=off \
 -O xattr=sa \
 -O sync=standard \
@@ -49,12 +64,34 @@ This is a large HHD pool for Virtual Machines, media and gaming, so setting the 
 Using SSD/NVME to store metadata on a HHD pool is something you should consider doing
 as it gives a huge gain in latency and your large HHD pool now becomes a much nicer pool for both games and Virtual Machines.
 
-I'm using older SATA SSDs here that I don't completely trust, so I put them in a mirror,
+I'm using older SATA SSDs (an old Intel and an old Kingstone) here that I don't completely trust, so I put them in a mirror,
 then one can break and you have the chance to replace it, mirroring also gives increased read speed,
 like stripe but only for reads, not for writes, which is not relevant for special vdev anyway.
 
 remember that if you use a special vdev for metadata, all data on the entire zpool will be lost if you delete this special vdev
 
+Special Vdev:
 ```bash
-sudo zpool add -f -o ashift=12 tank special mirror
+sudo zpool add -f -o ashift=12 tank special mirror /dev/disk/by-id/ata-INTEL_SSDSC2CW120A3_CVCV430601BD120BGN /dev/disk/by-id/ata-KINGSTON_SA400S37120G_50026B767B0067D9
 ```
+
+## Dataset 
+
+now we can create a dataset on this awesome tank and since we already set up the dataset options on this tank, they inherit these when we create new datasets, only if we want changed options do we need to set them, this time we run as the pool is prepared
+
+I want to create a dataset for my media library, I name this library. I also want this to be automatically mounted in my home so I set canmount=on and mountpoint in my home under Library
+
+Create dataset "library"
+```bash
+sudo zfs create \
+-o mountpoint=/home/core/Library \
+-o canmount=on \
+tank/library
+```
+Make your user the owner:
+```bash
+sudo chown core:core -R /home/core/Library
+```
+
+Now I got a directory mounted in my home called Library, can we test this with nx-mv and see if we managed to get satisfactory results
+
