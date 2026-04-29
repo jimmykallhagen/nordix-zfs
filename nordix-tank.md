@@ -97,4 +97,4 @@ Now I got a directory mounted in my home called Library, can we test this with n
 
 ![1](https://github.com/jimmykallhagen/nordix-zfs/blob/main/Screenshot-Wed%20Apr%2029%2009%3A45%3A38%20PM%20UTC%202026.png)
 ![2](Screensho.png)
-![3](/Screenshot-Wed Apr 29 09:46:20 PM UTC 2026.png)
+![3]("/Screenshot-Wed Apr 29 09:46:20 PM UTC 2026.png")
