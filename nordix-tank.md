@@ -1,7 +1,8 @@
 
 
 
-![nordix](https://github.com/jimmykallhagen/Nordix/blob/main/icons/hicolor/128x128/apps/nordix.png) ![HHD](https://github.com/jimmykallhagen/nordix-zfs/blob/main/IMG_5369.jpeg)
+![nordix](https://github.com/jimmykallhagen/Nordix/blob/main/icons/hicolor/128x128/apps/nordix.png)
+![HHD](https://github.com/jimmykallhagen/nordix-zfs/blob/main/IMG_5369.jpeg)
 
 
 # ZPOOL - HHD
