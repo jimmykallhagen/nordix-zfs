@@ -127,14 +127,18 @@ sudo wipefs -a --force /dev/sdd
 ---
 
 **_3️⃣_**
+ - Disk By-Id
+
+  > According to the current ZFS documentation, they recommend not creating zpools with device /dev/sdX or /dev/nvmeX
+but it is recommended to use disk by-id, it is possible to use device name but it can cause problems.
+> 
  - Zpool create tank
 
 > _This will create a fast Stripe hhd pool, make sure your hhd is in good condition and that it is okay. 
 
 > We set a number of options here that are not zpool options with -O, these are dataset options and we set them now so that all the datasets we create later inherit these options, this means that you do not need to set these options anymore than when creating this zpool. If you want other options or individual options on your datasets, it is perfectly possible to only set them on the current dataset and these options will then be overriden
 
-According to the current ZFS documentation, they recommend not creating zpools with device /dev/sdX or /dev/nvmeX
-but it is recommended to use disk by-id, it is possible to use device name but it can cause problems.
+
 
 
 An easy way to check this is to go to directory /dev/disk/by-id/
