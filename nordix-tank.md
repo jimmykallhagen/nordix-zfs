@@ -1,46 +1,9 @@
 
-Skip to content
 
-    jimmykallhagen
-    nordix-zfs
 
-Repository navigation
+![nordix](https://github.com/jimmykallhagen/Nordix/blob/main/icons/hicolor/128x128/apps/nordix.png) ![HHD](https://github.com/jimmykallhagen/nordix-zfs/blob/main/IMG_5369.jpeg)
 
-    Code
-    Issues
-    Pull requests
-    Actions
-    Projects
-    Wiki
-    Security and quality
-    Insights
-    Settings
 
-Commit 96b403b
-jimmykallhagen
-jimmykallhagen
-authored
-2 minutes ago
-Delete nordix-tank.md
-main
-
-1 parent 
-4c6dead
- commit 
-96b403b
-
-1 file changed
--303Lines changed: 0 additions & 303 deletions
-File tree
-
-    nordix-tank.md
-
- 
-‎nordix-tank.md‎
--303Lines changed: 0 additions & 303 deletions
-Original file line number	Diff line number	Diff line change
-@@ -1,303 +0,0 @@
-![HHD](https://github.com/jimmykallhagen/nordix-zfs/blob/main/IMG_5369.jpeg)
 # ZPOOL - HHD
 **Part of:** [Nordix](https://github.com/jimmykallhagen/Nordix)  
 **Author:** Jimmy Källhagen  
