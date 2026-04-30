@@ -186,9 +186,9 @@ For SATA Devices it is "ata" that we will use. My list will then look like this
 **_4️⃣_**
  - **Zpool create tank**
 
-> _This will create a fast Stripe hhd pool, make sure your hhd is in good condition and that it is okay. 
+This will create a fast Stripe hhd pool, make sure your hhd is in good condition and that it is okay. 
 
-> We set a number of options here that are not zpool options with -O, these are dataset options and we set them now so that all the datasets we create later inherit these options, this means that you do not need to set these options anymore than when creating this zpool. If you want other options or individual options on your datasets, it is perfectly possible to only set them on the current dataset and these options will then be overriden
+We set a number of options here that are not zpool options with -O, these are dataset options and we set them now so that all the datasets we create later inherit these options, this means that you do not need to set these options anymore than when creating this zpool. If you want other options or individual options on your datasets, it is perfectly possible to only set them on the current dataset and these options will then be overriden
 
 **_⚠️_**
 >Remember to always set ashift correctly, modern NVME SSD, SATA SDD and HHD usually always have 4k (4096) sectors, your devices will lie to you and the system and often show 512 sectors, this is to be compatible with windows, windows still runs today with the same kernel that was released in 1993, therefore, as a hardware manufacturer, you must comply with these ancient specifications. 
@@ -196,6 +196,8 @@ you cannot trust what the system says that your device has for sectors.
 > To be completely sure what your devices have for sectors, go to your manufacturer's website and check the specifications, however, it is very safe to believe that you have 4k (4096) sectors and there we set ashift=12, some of the very latest and sharpest NVME can have 8K (8192) sectors and then you set ashift=13
 
 
+
+- This will create and format a zpool, here we only include the devices that will act as storage units, as a rule of thumb use units of the same type, size and specifications. You can mix whatever you want but it will not be to your advantage to do so
 
 
 
