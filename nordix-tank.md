@@ -19,12 +19,17 @@ so you can now run it on the stripe part and then actually be able to use your H
 
 _I will add a guide to creating a combined stripe and raidz1 pool after the stripe pool guide, in written form I have not done this yet_
 ---
-## **Reach your system's full storage pool potential with ZFS**
-This is my own setup for a HHD zpool, 3 HGST 8TB, used with between 20-25 thousand hours of operation,
+
+**Reach your system's full storage pool potential with ZFS**
+
+ - This is my own setup for a HHD zpool, 3 HGST 8TB, used with between 20-25 thousand hours of operation,
 no bad sections, so they are perfect for acting as a fast, nice home lab zpool
-Remember that the recommendations for ZFS are geared towards server and enterprise use,
+
+> Remember that the recommendations for ZFS are geared towards server and enterprise use,
 for a regular home computer you will probably never have problems with healthy drives in the stripe.
+
 ---
+
 > ⚠️ </br>
 **_Always make sure your HHDs have good ventilation and that their mounting has vibration damping, if any of this is lacking in your setup you can drastically minimize the lifespan of your HHDs._** </br>
 > 🚫 </br>
