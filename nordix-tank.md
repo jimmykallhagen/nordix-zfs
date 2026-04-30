@@ -48,12 +48,12 @@ If you already have your system on an nvme you can create a zvol and use it as a
  _**1️⃣**_
  - Locate your drives.
 
-```fish
+```Fish
 lslbk
 ```
 
 For me it looks like this, it might look different for you:
-```fish
+```Fish
 ┏━[❄️]━[core]━[:11:07:34
 ┣━[Nordix]━[❄️]━[~
 ┗❯lsblk
@@ -99,13 +99,13 @@ The drives I will be using are
  - 2 Old SATA SSDs, one Intel 120GB and one Kingston 120GB as Special Vdev's
 
 The 8TB HGST HHD is:
-```
+```Fish
 /dev/sda
 /dev/sdc
 /dev/sde
 ```
 The SATA SDD is:
-```
+```Fish
 /dev/sdb
 /dev/sdd
 ```
@@ -136,7 +136,7 @@ An easy way to check this is to go to directory /dev/disk/by-id/
 and look for your current drive, copy it and use the full path in the zpool creation
 
 Create zpool:
-```bash
+```Fish
 sudo zpool create -f -o ashift=12 \
 -o autotrim=on \
 -o feature@large_dnode=enabled \
