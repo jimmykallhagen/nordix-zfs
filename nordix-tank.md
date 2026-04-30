@@ -175,6 +175,7 @@ For SATA Devices it is "ata" that we will use. My list will then look like this
  - **Zpool create tank**
 This will create a fast Stripe HHD pool, make sure your HHD is in good condition and that it is okay. 
 We set a number of options here that are not zpool options with -O, these are dataset options and we set them now so that all the datasets we create later inherit these options, this means that you do not need to set these options anymore than when creating this zpool. If you want other options or individual options on your datasets, it is perfectly possible to only set them on the current dataset and these options will then be overriden
+
 **⚠️**
 >Remember to always set ashift correctly, modern NVME SSD, SATA SDD and HHD usually always have 4k (4096) sectors, your devices will lie to you and the system and often show 512 sectors, this is to be compatible with windows, windows still runs today with the same kernel that was released in 1993, therefore, as a hardware manufacturer, you must comply with these ancient specifications. 
 you cannot trust what the system says that your device has for sectors.
