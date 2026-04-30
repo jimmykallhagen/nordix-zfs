@@ -250,7 +250,7 @@ copies=2
 this means that you create two of each file, this is to increase the redundancy when checking but also to increase the read speed asevert on the HHD, you can by setting copies=2 increase the read speed by up to 100%, you will however get worse write speed and you will get less storage capacity, but if you run virtual machines and your zpool is running a little too slowly, copies=2 can be a solution that makes your virtual machine run smoothly
 ---
 
-⚠️
-> ***ZFS is its own system in your system, and since ZFS is the best system we have for managing files and storage devices, it should also be allowed to use its own scheduler, so it is important that you apply this udev rule in your system.**
+⚠️ _-_ **_YOU NEED THIS:_**
+> **ZFS is its own system in your system, and since ZFS is the best system we have for managing files and storage devices, it should also be allowed to use its own scheduler, so it is important that you apply this udev rule in your system.**
 
   - [**UDEV-RULE**](https://github.com/jimmykallhagen/nordix-zfs/tree/main/zfs-specific-udev-rules)
