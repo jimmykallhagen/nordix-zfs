@@ -244,9 +244,9 @@ then one can break and you have the chance to replace it, mirroring also gives i
 like stripe but only for reads, not for writes, which is not relevant for special vdev anyway.
 
 > ⚠️ </br>
-> _Remember that if you use a special vdev for metadata, all data on the entire zpool will be lost if you delete or remove this special vdev </br>
-> Set the ashift like our zpool configuration_
-
+> _Remember that if you use a special vdev for metadata, all data on the entire zpool will be lost if you delete or remove this special vdev. </br>
+> Always set ashift for your special vdefv to match the zpool they are to be connected to in our zpool configuration
+ 
  - Add Special vdev for metadata only
 ```Fish
 sudo zpool add -f \
@@ -292,7 +292,9 @@ Now I got a directory mounted in my home called Library, can we test this with n
 ![2](Screensho.png)
 ![3](https://github.com/jimmykallhagen/nordix-zfs/blob/main/Screenshot-Wed%20Apr%2029%2009%3A46%3A20%20PM%20UTC%202026.png)
 
-I myself am very happy with the result and have now got a storage pool of 28TB that can be used for everything from Virtual machines, backups, game libraries, media libraries, ZFS really offers world class storage solutions, if you want to take this further you can create an l2arc, slog, larger special vdev and then put small files on the ssd also to minimize the bottlenecks on your HHD, you can also set dataset options:
+I myself am very happy with the result and have now got a storage pool of 28TB that can be used for everything from Virtual machines, backups, game libraries, media libraries, ZFS really offers world class storage solutions
+
+> If you want to take this further you can create an l2arc, slog, larger special vdev and then put small files on the ssd also to minimize the bottlenecks on your HHD, you can also set dataset options:
 copies=2 
 this means that you create two of each file, this is to increase the redundancy when checking but also to increase the read speed asevert on the HHD, you can by setting copies=2 increase the read speed by up to 100%, you will however get worse write speed and you will get less storage capacity, but if you run virtual machines and your zpool is running a little too slowly, copies=2 can be a solution that makes your virtual machine run smoothly
 
