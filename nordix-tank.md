@@ -53,7 +53,7 @@ locate:
 lslbk
 ```
 For me it looks like this, it might look different for you:
-```bash
+```fish
 ┏━[❄️]━[core]━[:11:07:34
 ┣━[Nordix]━[❄️]━[~
 ┗❯lsblk
