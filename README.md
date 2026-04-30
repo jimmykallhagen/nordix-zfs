@@ -9,29 +9,29 @@
 
 Nordix ZFS configuration and documentation.
 
-- 1.  **Dataset hierarchy and settings**
-  - [**Nordix-ZFS-Dataset**](/nordix-zfs-dataset/)
+### 1.  **Dataset hierarchy and settings**
+ - [**Nordix-ZFS-Dataset**](/nordix-zfs-dataset/)
  
-- 2. - **Kernel module parameters**
-  - [**Nordix-ZFS-Config**](/nordix-zfs-config/)
+### 2. - **Kernel module parameters**
+ - [**Nordix-ZFS-Config**](/nordix-zfs-config/)
 
-- 3. - **Kernel module parameters**
-  - [**Nordix-ZFS-Udev-Rules**](/zfs-specific-udev-rules/)
+### 3. - **Kernel module parameters**
+ - [**Nordix-ZFS-Udev-Rules**](/zfs-specific-udev-rules/)
 
-- 4. - ** Docker ZFS integration**
-  - [**Docker on ZFS**](/docker-zfs/)
+### 4. - **Docker ZFS integration**
+ - [**Docker on ZFS**](/docker-zfs/)
 
-- 5. - **ZFS, ARC, Zvol, VM, theory**
-  - [**VM on ZFS**](https://github.com/jimmykallhagen/nordix-vm/blob/main/README.md)
+### 5. - **ZFS, ARC, Zvol, VM, theory**
+ - [**VM on ZFS**](https://github.com/jimmykallhagen/nordix-vm/blob/main/README.md)
 
-- 5. - **Two differnt types of system monitors**
-  - [**Nordix ZFS Monitors**](nordix-zfs-monitor.md)
+### 5. - **Two differnt types of system monitors**
+ - [**Nordix ZFS Monitors**](nordix-zfs-monitor.md)
 
-- 6. - **Guide to create a Raid storage volyme with HHD's and Special vdev's** 
-  - [**Nordix Storage Guide**](https://github.com/jimmykallhagen/nordix-zfs/blob/main/nordix-tank.md)
+### 6. - **Guide to create a Raid storage volyme with HHD's and Special vdev's** 
+ - [**Nordix Storage Guide**](https://github.com/jimmykallhagen/nordix-zfs/blob/main/nordix-tank.md)
 
-- 7. - ** Depricated nordix zfs setup**
-  - [**PRE-OpenZFS_2.2.0**](PRE-OpenZFS_2.2.0-nordix-zfs-config)||
+### 7. - ** Depricated nordix zfs setup**
+ - [**PRE-OpenZFS_2.2.0**](PRE-OpenZFS_2.2.0-nordix-zfs-config)||
  
 **Nordix - Illustration: Tux The Truth Bringer's Betrayal - "The Forbidden Power"**
 ![Forbidden-power](https://github.com/jimmykallhagen/nordix-fanart/blob/main/the-forbidden-power-ZFS/the-forbidden-power-4k.png)
