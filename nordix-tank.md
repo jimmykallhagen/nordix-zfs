@@ -43,7 +43,7 @@ If you already have your system on an nvme you can create a zvol and use it as a
 
 ---
 
-## **Nordix - Zpool Guide**
+## **Nordix - Zpool Storage Guide**
 
 1. locate your drives and clean them first, be sure to get the right device otherwise it will be wrong.
 
@@ -51,6 +51,62 @@ locate:
 ```bash
 lslbk
 ```
+For me it looks like this, it might look different for you:
+```bash
+┏━[❄️]━[core]━[:11:07:34
+┣━[Nordix]━[❄️]━[~
+┗❯lsblk
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda           8:0    0   7.3T  0 disk 
+├─sda1        8:1    0   7.3T  0 part 
+└─sda9        8:9    0    64M  0 part 
+sdb           8:16   0 111.8G  0 disk 
+├─sdb1        8:17   0 111.8G  0 part 
+└─sdb9        8:25   0     8M  0 part 
+sdc           8:32   0   7.3T  0 disk 
+├─sdc1        8:33   0   7.3T  0 part 
+└─sdc9        8:41   0    64M  0 part 
+sdd           8:48   0 111.8G  0 disk 
+├─sdd1        8:49   0 111.8G  0 part 
+└─sdd9        8:57   0     8M  0 part 
+sde           8:64   0   7.3T  0 disk 
+├─sde1        8:65   0   7.3T  0 part 
+└─sde9        8:73   0    64M  0 part 
+sdf           8:80   1  28.9G  0 disk 
+└─sdf1        8:81   1  1000M  0 part 
+zd0         230:0    0   220G  0 disk 
+├─zd0p1     230:1    0   100M  0 part 
+├─zd0p2     230:2    0    16M  0 part 
+└─zd0p3     230:3    0 219.9G  0 part 
+nvme0n1     259:0    0 931.5G  0 disk 
+├─nvme0n1p1 259:2    0 931.5G  0 part 
+└─nvme0n1p9 259:3    0     8M  0 part 
+nvme1n1     259:1    0 931.5G  0 disk 
+├─nvme1n1p1 259:5    0 931.5G  0 part 
+└─nvme1n1p9 259:6    0     8M  0 part 
+nvme3n1     259:4    0 931.5G  0 disk 
+├─nvme3n1p1 259:7    0 931.5G  0 part 
+└─nvme3n1p9 259:8    0     8M  0 part 
+nvme2n1     259:9    0 931.5G  0 disk 
+├─nvme2n1p1 259:10   0 931.5G  0 part 
+└─nvme2n1p9 259:11   0     8M  0 part
+```
+> _Be sure to locate your devices correctly here, otherwise it won't be fun._
+
+The drives I will be using are three 8TB HGST HHD for storage and two old SATA SSDs, one Intel 120GB and one Kingston 120GB.
+
+The 8TB HGST HHD is:
+```
+/dev/sda
+/dev/sdc
+/dev/sde
+```
+The SATA SDD is:
+```
+/dev/sdb
+/dev/sdd
+```
+**2.** **Now we will clean these drives and prepare them for reformatting with ZFS**
 Clean:
 ```bash
 sudo wipefs -a --force /dev/sdX
