@@ -248,8 +248,10 @@ like stripe but only for reads, not for writes, which is not relevant for specia
 > Set the ashift like our zpool configuration
 
  - Add Special vdev for metadata only
-```bash
-sudo zpool add -f -o ashift=12 tank special mirror /dev/disk/by-id/ata-INTEL_SSDSC2CW120A3_CVCV430601BD120BGN /dev/disk/by-id/ata-KINGSTON_SA400S37120G_50026B767B0067D9
+```Fish
+sudo zpool add -f \
+-o ashift=12 \
+tank special mirror /dev/disk/by-id/ata-INTEL_SSDSC2CW120A3_CVCV430601BD120BGN /dev/disk/by-id/ata-KINGSTON_SA400S37120G_50026B767B0067D9
 ```
 
 ---
