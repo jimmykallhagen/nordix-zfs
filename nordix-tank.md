@@ -94,7 +94,9 @@ nvme2n1     259:9    0 931.5G  0 disk
 ```
 > _Be sure to locate your devices correctly here, otherwise it won't be fun._
 
-The drives I will be using are three 8TB HGST HHD for storage and two old SATA SSDs, one Intel 120GB and one Kingston 120GB.
+The drives I will be using are
+ - 3 8TB HGST HHD for storage
+ - 2 Old SATA SSDs, one Intel 120GB and one Kingston 120GB as Special Vdev's
 
 The 8TB HGST HHD is:
 ```
@@ -107,11 +109,22 @@ The SATA SDD is:
 /dev/sdb
 /dev/sdd
 ```
-**2.** **Now we will clean these drives and prepare them for reformatting with ZFS**
-Clean:
-```bash
+---
+
+**_2️⃣_**
+ - Erase the drives
+
+Erase:
+```Fish
 sudo wipefs -a --force /dev/sdX
+sudo wipefs -a --force /dev/sda
+sudo wipefs -a --force /dev/sdc
+sudo wipefs -a --force /dev/sde
+sudo wipefs -a --force /dev/sdb
+sudo wipefs -a --force /dev/sdd
 ```
+> _With the --force flag, you may need to run the command twice to be sure you have forced your deletion_
+
 ---
 
 ## Zpool create tank
