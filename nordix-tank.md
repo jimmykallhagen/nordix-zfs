@@ -126,9 +126,11 @@ We use this command to display the disk by-id of our devices:
 ```Fish
 ls -l --time-style=+ /dev/disk/by-id/ | grep sda
 ```
+
 > If you have cleaned up your devices correctly as I showed before, only two options will appear when we run this command.
 > _I couldn't come up with a better way to sort out the different ids than what this command does, it's not perfect but good enough_ 
 **So for me it looks like this**
+
  - HHD
 ```Fish
 ls -l --time-style=+ /dev/disk/by-id/ | grep sda
@@ -157,6 +159,7 @@ lrwxrwxrwx 1 root root  9  ata-KINGSTON_SA400S37120G_50026B767B0067D9 -> ../../s
 lrwxrwxrwx 1 root root  9  wwn-0x50026b767b0067d9 -> ../../sdd
 ```
 For SATA Devices it is "ata" that we will use. My list will then look like this
+
   - **HHD**
 ```Fish
  /dev/disk/by-id/ata-HUH728080ALN600_2EHXRH1X
@@ -207,9 +210,9 @@ tank /dev/disk/by-id/ata-HUH728080ALN600_2EHXRH1X /dev/disk/by-id/ata-HUH728080A
 even though this is a stripe pool, this is because I will run my special vdev's in mirror and if I later want to upgrade to a larger SSD, it will now automatically accept a larger SSD_
 ---
 **_5️⃣_**
- - **Special Vdev** - _a must_
-This will add two SATA sdd disks in mirror for special vdevs, I prefer to just store metadata on them.
-This is a large HHD pool for Virtual Machines, media and gaming, so setting the options to store small files on special vdevs is not really necessary.
+**Special Vdev** - _a must_
+- This will add two SATA sdd disks in mirror for special vdevs, I prefer to just store metadata on them.
+- This is a large HHD pool for Virtual Machines, media and gaming, so setting the options to store small files on special vdevs is not really necessary.
 > Using SSD/NVME to store metadata on a HHD pool is something you should consider doing
 as it gives a huge gain in performance on latency and your large HHD pool now becomes a much nicer pool for both games and Virtual Machines.
 I'm using older SATA SSDs (an old Intel and an old Kingstone) here that I don't completely trust, so I put them in a mirror,
