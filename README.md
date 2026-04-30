@@ -17,7 +17,7 @@ Nordix ZFS configuration and documentation.
 | [**Docker on ZFS**](/docker-zfs/) | Docker ZFS integration |
 | [**VM on ZFS**](https://github.com/jimmykallhagen/nordix-vm/blob/main/README.md) | ZFS, ARC, Zvol, VM, theory | 
 | [**Nordix ZFS Monitors**](nordix-zfs-monitor.md) | Two differnt types of system monitors | 
-| [**Nordix Storage Guide**](https://github.com/jimmykallhagen/nordix-zfs/blob/main/nordix-tank.md) | Guide to create aHHD Raid storage volyme with Special vdevs |
+| [**Nordix Storage Guide**](https://github.com/jimmykallhagen/nordix-zfs/blob/main/nordix-tank.md) | Guide to create a Raid storage volyme with HHD's and Special vdev's |
 | [**PRE-OpenZFS_2.2.0**](PRE-OpenZFS_2.2.0-nordix-zfs-config)| Depricated nordix zfs setup |
  
 **Nordix - Illustration: Tux The Truth Bringer's Betrayal - "The Forbidden Power"**
