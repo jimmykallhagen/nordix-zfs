@@ -1,7 +1,7 @@
 
 
 
-![nordix-cool-super-HHD]([https://github.com/jimmykallhagen/Nordix/blob/main/icons/hicolor/128x128/apps/nordix.png](https://github.com/jimmykallhagen/nordix-zfs/blob/main/nordix-hhd.png)
+![nordix-cool-super-HHD](https://github.com/jimmykallhagen/nordix-zfs/blob/main/nordix-hhd.png)
 
 # ZPOOL - HHD
 **Part of:** [Nordix](https://github.com/jimmykallhagen/Nordix)  
