@@ -191,7 +191,7 @@ For SATA Devices it is "ata" that we will use. My list will then look like this
 > We set a number of options here that are not zpool options with -O, these are dataset options and we set them now so that all the datasets we create later inherit these options, this means that you do not need to set these options anymore than when creating this zpool. If you want other options or individual options on your datasets, it is perfectly possible to only set them on the current dataset and these options will then be overriden
 
 
->⚠️
+>_⚠️_ </br>
 > Remember to always set ashift correctly, modern NVME SSDs, SATA SDDs and HHDs usually always have 4k sectors, they lie to the system and can therefore show 512k, this is because Windows is really a legacy system and still runs today with the same kernel that was released in 1993. Therefore, you cannot trust what the system says that your device has for sectors, go to your manufacturer's website and check the specifications, however, it is very safe to believe that you have 4k sectors and there we set ashift=12, some of the very latest and sharpest NVME can have 8K sectors and then you set ashift=13
 
 
