@@ -23,7 +23,7 @@ no bad sections, so they are perfect for acting as a fast, nice home lab zpool
 Remember that the recommendations for ZFS are geared towards server and enterprise use,
 for a regular home computer you will probably never have problems with healthy drives in the stripe.
 
->Always make sure your HHDs have good ventilation and that their mounting has vibration damping, if any of this is lacking in your setup you can drastically minimize the lifespan of your HHDs.
+>**_Always make sure your HHDs have good ventilation and that their mounting has vibration damping, if any of this is lacking in your setup you can drastically minimize the lifespan of your HHDs._**
 
 According to my tests with compression, you get varied results on media and games, 
 but one factor that is the same is that it does not give a better compression ratio with a higher degree of compression, 
