@@ -94,6 +94,7 @@ nvme2n1     259:9    0 931.5G  0 disk
 The drives I will be using are
  - 3 8TB HGST HHD for storage
  - 2 Old SATA SSDs, one Intel 120GB and one Kingston 120GB as Special Vdev's
+
 The 8TB HGST HHD is:
 ```Fish
 /dev/sda
@@ -108,7 +109,7 @@ The SATA SDD is:
 ---
 **_2️⃣_**
  - **Erase the drives**
-Erase:
+
 ```Fish
 sudo wipefs -a --force /dev/sda
 sudo wipefs -a --force /dev/sdc
@@ -120,7 +121,7 @@ sudo wipefs -a --force /dev/sdd
 ---
 **_3️⃣_**
  - Disk By-Id
-> According to the current ZFS documentation, they recommend not creating zpools with device /dev/sdX or /dev/nvmeX, but instead it is recommended to use disk by-id. It is possible to use device name but it can cause problems. Make it a practice to always create zpools with disk By-Id
+> According to the current ZFS documentation, they recommend not creating zpools with device /dev/sdX or /dev/nvmeX, but instead it is recommended to use disk by-id. It is possible to use device name but it can cause problems. Make it a practice to always create zpools with disk By-Id.
 We use this command to display the disk by-id of our devices:
 ```Fish
 ls -l --time-style=+ /dev/disk/by-id/ | grep sda
