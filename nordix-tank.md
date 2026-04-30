@@ -25,7 +25,7 @@ for a regular home computer you will probably never have problems with healthy d
 
 >**_Always make sure your HHDs have good ventilation and that their mounting has vibration damping, if any of this is lacking in your setup you can drastically minimize the lifespan of your HHDs._**
 
-> ⚠️**_ Never expose your HHD to shocks and make sure to never drop one while mounting, this is guaranteed to destroy it instantly._**⚠️
+> ⚠️**_Never expose your HHD to shocks and make sure to never drop one while mounting, this is guaranteed to destroy it instantly._**⚠️
  
 According to my tests with compression, you get varied results on media and games, 
 but one factor that is the same is that it does not give a better compression ratio with a higher degree of compression, 
