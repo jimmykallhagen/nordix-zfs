@@ -186,11 +186,11 @@ For SATA Devices it is "ata" that we will use. My list will then look like this
 **_4️⃣_**
  - **Zpool create tank**
 
-This will create a fast Stripe hhd pool, make sure your hhd is in good condition and that it is okay. 
+This will create a fast Stripe HHD pool, make sure your HHD is in good condition and that it is okay. 
 
 We set a number of options here that are not zpool options with -O, these are dataset options and we set them now so that all the datasets we create later inherit these options, this means that you do not need to set these options anymore than when creating this zpool. If you want other options or individual options on your datasets, it is perfectly possible to only set them on the current dataset and these options will then be overriden
 
-**_⚠️_**
+**⚠️**
 >Remember to always set ashift correctly, modern NVME SSD, SATA SDD and HHD usually always have 4k (4096) sectors, your devices will lie to you and the system and often show 512 sectors, this is to be compatible with windows, windows still runs today with the same kernel that was released in 1993, therefore, as a hardware manufacturer, you must comply with these ancient specifications. 
 you cannot trust what the system says that your device has for sectors.
 > To be completely sure what your devices have for sectors, go to your manufacturer's website and check the specifications, however, it is very safe to believe that you have 4k (4096) sectors and there we set ashift=12, some of the very latest and sharpest NVME can have 8K (8192) sectors and then you set ashift=13
@@ -198,9 +198,7 @@ you cannot trust what the system says that your device has for sectors.
 
 
 - This will create and format a zpool, here we only include the devices that will act as storage units, as a rule of thumb use units of the same type, size and specifications. You can mix whatever you want but it will not be to your advantage to do so
-
-
-
+- I set the name tank then I use the disk by-id I previously sorted out for my HHD and set them in a row with a space between each after tank, if you want a different name than tank then just change it, tank is however a standard name for a storage pool in ZFS
 
 Create zpool:
 ```Fish
@@ -223,49 +221,73 @@ sudo zpool create -f -o ashift=12 \
 -o autoexpand=on \
 tank /dev/disk/by-id/ata-HUH728080ALN600_2EHXRH1X /dev/disk/by-id/ata-HUH728080ALN600_VJG1PJBX /dev/disk/by-id/ata-HUH728080ALN600_VJG1U0SX
 ```
+> _I have set the option autoexpand=on
+even though this is a stripe pool, this is because I will run my special vdev's in mirror and if I later want to upgrade to a larger SSD, it will now automatically accept a larger SSD_
+
 ---
 
-## **Special Vdev** - _a must_
+**_5️⃣_**
+ - **Special Vdev** - _a must_
 
 This will add two SATA sdd disks in mirror for special vdevs, I prefer to just store metadata on them.
 This is a large HHD pool for Virtual Machines, media and gaming, so setting the options to store small files on special vdevs is not really necessary.
 
-Using SSD/NVME to store metadata on a HHD pool is something you should consider doing
-as it gives a huge gain in latency and your large HHD pool now becomes a much nicer pool for both games and Virtual Machines.
+> Using SSD/NVME to store metadata on a HHD pool is something you should consider doing
+as it gives a huge gain in performance on latency and your large HHD pool now becomes a much nicer pool for both games and Virtual Machines.
 
 I'm using older SATA SSDs (an old Intel and an old Kingstone) here that I don't completely trust, so I put them in a mirror,
 then one can break and you have the chance to replace it, mirroring also gives increased read speed,
 like stripe but only for reads, not for writes, which is not relevant for special vdev anyway.
 
-remember that if you use a special vdev for metadata, all data on the entire zpool will be lost if you delete this special vdev
+> _Remember that if you use a special vdev for metadata, all data on the entire zpool will be lost if you delete or remove this special vdev_
 
-Special Vdev:
+> Set the ashift like our zpool configuration
+
+ - Add Special vdev for metadata only
 ```bash
 sudo zpool add -f -o ashift=12 tank special mirror /dev/disk/by-id/ata-INTEL_SSDSC2CW120A3_CVCV430601BD120BGN /dev/disk/by-id/ata-KINGSTON_SA400S37120G_50026B767B0067D9
 ```
+
 ---
 
-## Dataset 
+**_6️⃣_**
+ - **Create a Dataset** 
 
-now we can create a dataset on this awesome tank and since we already set up the dataset options on this tank, they inherit these when we create new datasets, only if we want changed options do we need to set them, this time we run as the pool is prepared
+Now we can create a dataset on this awesome tank and since we already set up the dataset options on this tank, they inherit these when we create new datasets, only if we want changed options do we need to set them, this time we run as the pool is prepared
 
-I want to create a dataset for my media library, I name this library. I also want this to be automatically mounted in my home so I set canmount=on and mountpoint in my home under Library
+ - Import your zpool once with force, so that zfs will include it in its cache
+```Fish
+sudo zpool export tank
+sudo zpool import -f tank
+```
+
+I want to create a dataset for my media library, I name this library. I also want this to be automatically mounted in my home so I set canmount=on and set the mountpoint in my home under Library
 
 Create dataset "library"
-```bash
+```Fish
 sudo zfs create \
 -o mountpoint=/home/core/Library \
 -o canmount=on \
 tank/library
 ```
 Make your user the owner:
-```bash
-sudo chown core:core -R /home/core/Library
+```Fish
+sudo chown core:core -R /home/core/Library/
 ```
 ---
 
+**_7️⃣_**
+- **The Test**
+  
 Now I got a directory mounted in my home called Library, can we test this with nx-mv and see if we managed to get satisfactory results
-
+ - Screeshot - Simple Test
+ - This runs with only primarycache=metadata
 ![1](https://github.com/jimmykallhagen/nordix-zfs/blob/main/Screenshot-Wed%20Apr%2029%2009%3A45%3A38%20PM%20UTC%202026.png)
 ![2](Screensho.png)
 ![3](https://github.com/jimmykallhagen/nordix-zfs/blob/main/Screenshot-Wed%20Apr%2029%2009%3A46%3A20%20PM%20UTC%202026.png)
+
+I myself am very happy with the result and have now got a storage pool of 28TB that can be used for everything from Virtual machines, backups, game libraries, media libraries, ZFS really offers world class storage solutions, if you want to take this further you can create an l2arc, slog, larger special vdev and then put small files on the ssd also to minimize the bottlenecks on your HHD, you can also set dataset options:
+copies=2 
+this means that you create two of each file, this is to increase the redundancy when checking but also to increase the read speed asevert on the HHD, you can by setting copies=2 increase the read speed by up to 100%, you will however get worse write speed and you will get less storage capacity, but if you run virtual machines and your zpool is running a little too slowly, copies=2 can be a solution that makes your virtual machine run smoothly
+
+---
