@@ -45,8 +45,8 @@ If you already have your system on an nvme you can create a zvol and use it as a
 
 ## **Nordix - Zpool Storage Guide**
 
-# _**1️⃣**_
-**locate your drives and clean them first, be sure to get the right device otherwise it will be wrong.**
+# _**1️⃣**_ Locate your drives
+Be sure to get the right device otherwise it will be wrong.
 
 locate your devices:
 ```bash
