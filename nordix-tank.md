@@ -22,7 +22,7 @@ Remember that the recommendations for ZFS are geared towards server and enterpri
 for a regular home computer you will probably never have problems with healthy drives in the stripe.
 ---
 > ⚠️ </br>
-**_Always make sure your HHDs have good ventilation and that their mounting has vibration damping, if any of this is lacking in your setup you can drastically minimize the lifespan of your HHDs._**
+**_Always make sure your HHDs have good ventilation and that their mounting has vibration damping, if any of this is lacking in your setup you can drastically minimize the lifespan of your HHDs._** </br>
 > 🚫 </br>
 **_Never expose your HHD to shocks and make sure to never drop one while mounting, this is guaranteed to destroy it instantly._**
 ---
