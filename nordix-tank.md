@@ -90,6 +90,7 @@ nvme2n1     259:9    0 931.5G  0 disk
 └─nvme2n1p9 259:11   0     8M  0 part
 ```
 > _Be sure to locate your devices correctly here, otherwise it won't be fun._
+
 The drives I will be using are
  - 3 8TB HGST HHD for storage
  - 2 Old SATA SSDs, one Intel 120GB and one Kingston 120GB as Special Vdev's
