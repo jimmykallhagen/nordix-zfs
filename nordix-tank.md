@@ -7,7 +7,7 @@
 ## **This is a guide to creating an optimal and fast additional storage volume for home use**
 
 ---
-**Redundancy**
+## **REDUNDACY**
 >If you have very important data you may need to consider some form of redundancy, in my opinion you want to run HHD in stripe to be able to have a nice home system, but there are solutions to achieve this with other raid configurations in combination with l2arc, special vdev and slog in combination with the options sync=always on the dataset, gives you a zpool with rudundas and very smooth use and masks any limited performance, but it requires you to build your entire computer for this very purpose. If you instead want to create a simple but effective storage pool with simple means, I have an alternative solution to the redundancy problem. This involves partitioning your HHD into two parts, one that you run stripe on and a smaller one that you run mirror or raidz1. You can imagine that most of the media, such as Steam games libraries etc. can be downloaded again.
 so you can now run it on the stripe part and then actually be able to use your HHD effectively for gaming, then have a second partition on your HHD which is then preferably run with zfs raidz1, you can then put critical data on it and then be safe
 >
