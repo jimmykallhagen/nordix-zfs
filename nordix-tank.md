@@ -6,8 +6,7 @@
 ![nordix-cool-super-HHD](https://github.com/jimmykallhagen/nordix-zfs/blob/main/nordix-hhd.png)
 
 
-# ZPOOL - HHD
-
+# ZPOOL Stipe - HHD - SSD Special Vdev 
 
 ---
 # **This is a guide to creating an optimal and fast additional storage volume for home use**
