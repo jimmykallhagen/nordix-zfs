@@ -15,7 +15,7 @@ _I will add a guide to creating a combined stripe and raidz1 pool after the stri
 
 ---
 
-## Reach your system's full storage pool potential with ZFS
+## **Reach your system's full storage pool potential with ZFS**
 
 This is my own setup for a HHD zpool, 3 HGST 8TB, used with between 20-25 thousand hours of operation,
 no bad sections, so they are perfect for acting as a fast, nice home lab zpool
@@ -45,7 +45,8 @@ If you already have your system on an nvme you can create a zvol and use it as a
 
 ## **Nordix - Zpool Storage Guide**
 
-1. locate your drives and clean them first, be sure to get the right device otherwise it will be wrong.
+
+### **1.** locate your drives and clean them first, be sure to get the right device otherwise it will be wrong.
 
 locate:
 ```bash
