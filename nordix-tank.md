@@ -14,6 +14,10 @@ so you can now run it on the stripe part and then actually be able to use your H
 _I will add a guide to creating a combined stripe and raidz1 pool after the stripe pool guide, in written form I have not done this yet_
 
 ---
+1
+___
+2
+***
 
 ## **Reach your system's full storage pool potential with ZFS**
 
