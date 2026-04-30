@@ -14,10 +14,6 @@ so you can now run it on the stripe part and then actually be able to use your H
 _I will add a guide to creating a combined stripe and raidz1 pool after the stripe pool guide, in written form I have not done this yet_
 
 ---
-1
-___
-2
-***
 
 ## **Reach your system's full storage pool potential with ZFS**
 
@@ -50,7 +46,7 @@ If you already have your system on an nvme you can create a zvol and use it as a
 ## **Nordix - Zpool Storage Guide**
 
 
-### **1.** locate your drives and clean them first, be sure to get the right device otherwise it will be wrong.
+### **1️⃣** locate your drives and clean them first, be sure to get the right device otherwise it will be wrong.
 
 locate:
 ```bash
