@@ -244,8 +244,8 @@ then one can break and you have the chance to replace it, mirroring also gives i
 like stripe but only for reads, not for writes, which is not relevant for special vdev anyway.
 
 > ⚠️ </br>
-> _Remember that if you use a special vdev for metadata, all data on the entire zpool will be lost if you delete or remove this special vdev_ </br>
-> _ Set the ashift like our zpool configuration_
+> _Remember that if you use a special vdev for metadata, all data on the entire zpool will be lost if you delete or remove this special vdev </br>
+> Set the ashift like our zpool configuration_
 
  - Add Special vdev for metadata only
 ```Fish
