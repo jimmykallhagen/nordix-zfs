@@ -1,5 +1,16 @@
 # ZPOOL - HHD
 
+**Part of:** [Nordix](https://github.com/jimmykallhagen/Nordix)  
+**Author:** Jimmy Källhagen  
+**License:** GPL-3.0-or-later
+
+This is a guide to creating an optimal and fast additional storage volume for home use
+
+>if you have very important data you may need to consider some form of redundancy, in my opinion you want to run HHD in stripe to be able to have a nice home system, but there are solutions to achieve this too, with l2arc, special vdev and options sync=always in combination with a slog, gives you a zpool with rudundas and very smooth use and masks any limited performance, but it requires you to build your entire computer for this very purpose. If you instead want to create a simple but effective storage pool with simple means, I have an alternative solution to the redundancy problem. This involves partitioning your HHD into two parts, one that you run stripe on and a smaller one that you run mirror on or raidz1. You can imagine that most of the media, such as Steam games libraries etc. can be downloaded again.
+so you can now run it on the stripe part and then actually be able to use your HHD effectively for gaming, then have a second partition on your HHD which is then preferably run with zfs raidz1, you can then put critical data on it and then be safe
+---
+
+
 This is my gna setup for a HHD zpool, 3 HGST 8TB, used with between 20-25 thousand hours of operation,
 no bad sections, so they are perfect for acting as a fast, nice home lab zpool
 
@@ -25,6 +36,7 @@ Clean:
 ```bash
 sudo wipefs -a --force /dev/sdX
 ```
+---
 
 ## Zpool create tank
 This will create a fast Stripe hhd pool, make sure your hhd is in good condition and that it is okay. 
@@ -55,6 +67,7 @@ sudo zpool create -f -o ashift=12 \
 -o autoexpand=on \
 tank /dev/disk/by-id/ata-HUH728080ALN600_2EHXRH1X /dev/disk/by-id/ata-HUH728080ALN600_VJG1PJBX /dev/disk/by-id/ata-HUH728080ALN600_VJG1U0SX
 ```
+---
 
 ## **Special Vdev** - _a must_
 
@@ -74,6 +87,7 @@ Special Vdev:
 ```bash
 sudo zpool add -f -o ashift=12 tank special mirror /dev/disk/by-id/ata-INTEL_SSDSC2CW120A3_CVCV430601BD120BGN /dev/disk/by-id/ata-KINGSTON_SA400S37120G_50026B767B0067D9
 ```
+---
 
 ## Dataset 
 
@@ -92,6 +106,7 @@ Make your user the owner:
 ```bash
 sudo chown core:core -R /home/core/Library
 ```
+---
 
 Now I got a directory mounted in my home called Library, can we test this with nx-mv and see if we managed to get satisfactory results
 
