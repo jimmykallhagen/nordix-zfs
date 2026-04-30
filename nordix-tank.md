@@ -169,10 +169,14 @@ lrwxrwxrwx 1 root root  9  wwn-0x50026b767b0067d9 -> ../../sdd
 ```
 
 For SATA Devices it is "ata" that we will use. My list will then look like this
+  - **HHD**
 ```Fish
  /dev/disk/by-id/ata-HUH728080ALN600_2EHXRH1X
  /dev/disk/by-id/ata-HUH728080ALN600_VJG1U0SX
  /dev/disk/by-id/ata-HUH728080ALN600_VJG1PJBX
+```
+  - **SSD**
+```Fish
  /dev/disk/by-id/ata-INTEL_SSDSC2CW120A3_CVCV430601BD120BGN
  /dev/disk/by-id/ata-KINGSTON_SA400S37120G_50026B767B0067D9
 ```
