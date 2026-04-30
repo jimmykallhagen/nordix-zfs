@@ -185,7 +185,8 @@ you cannot trust what the system says that your device has for sectors.
 > To be completely sure what your devices have for sectors, go to your manufacturer's website and check the specifications, however, it is very safe to believe that you have 4k (4096) sectors and there we set ashift=12, some of the very latest and sharpest NVME can have 8K (8192) sectors and then you set ashift=13
 - This will create and format a zpool, here we only include the devices that will act as storage units, as a rule of thumb use units of the same type, size and specifications. You can mix whatever you want but it will not be to your advantage to do so
 - I set the name tank then I use the disk by-id I previously sorted out for my HHD and set them in a row with a space between each after tank, if you want a different name than tank then just change it, tank is however a standard name for a storage pool in ZFS
-Create zpool:
+
+ - Create zpool:
 ```Fish
 sudo zpool create -f -o ashift=12 \
 -o autotrim=on \
@@ -238,14 +239,15 @@ sudo zpool export tank
 sudo zpool import -f tank
 ```
 I want to create a dataset for my media library, I name this library. I also want this to be automatically mounted in my home so I set canmount=on and set the mountpoint in my home under Library
-Create dataset "library"
+
+- Create dataset "library"
 ```Fish
 sudo zfs create \
 -o mountpoint=/home/core/Library \
 -o canmount=on \
 tank/library
 ```
-Make your user the owner:
+- Make your user the owner:
 ```Fish
 sudo chown core:core -R /home/core/Library/
 ```
@@ -254,18 +256,20 @@ sudo chown core:core -R /home/core/Library/
 - **The Test**
   
 Now I got a directory mounted in my home called Library, can we test this with nx-mv and see if we managed to get satisfactory results
- - Screeshot - Simple Test
- - This runs with only primarycache=metadata
+
+This runs with only primarycache=metadata
+
+ - Screeshot - Simple Test with nx-mv 
 ![1](https://github.com/jimmykallhagen/nordix-zfs/blob/main/Screenshot-Wed%20Apr%2029%2009%3A45%3A38%20PM%20UTC%202026.png)
 ![2](Screensho.png)
 ![3](https://github.com/jimmykallhagen/nordix-zfs/blob/main/Screenshot-Wed%20Apr%2029%2009%3A46%3A20%20PM%20UTC%202026.png)
-I myself am very happy with the result and have now got a storage pool of 28TB that can be used for everything from Virtual machines, backups, game libraries, media libraries, ZFS really offers world class storage solutions
+I myself am very happy with the result and have now got a storage pool of 24TB that can be used for everything from Virtual machines, backups, game libraries, media libraries, a zpool like this is capable to run full OS on if you want to have more BE. ZFS really offers world class storage solutions
 > If you want to take this further you can create an l2arc, slog, larger special vdev and then put small files on the ssd also to minimize the bottlenecks on your HHD, you can also set dataset options:
 copies=2 
-this means that you create two of each file, this is to increase the redundancy when checking but also to increase the read speed asevert on the HHD, you can by setting copies=2 increase the read speed by up to 100%, you will however get worse write speed and you will get less storage capacity, but if you run virtual machines and your zpool is running a little too slowly, copies=2 can be a solution that makes your virtual machine run smoothly
+this means that you create two of each file, this is to increase the redundancy when checksum but also to increase the read speed considerably on the HHD, you can by setting copies=2 increase the read speed by up to 100%, you will however get worse write speed and you will get less storage capacity, but if you run virtual machines and your zpool is running a little too slowly, copies=2 can be a solution that makes your virtual machine run smoothly
 ---
 
-⚠️ _-_ **_YOU NEED THIS:_**
+# ⚠️ _-_ **_YOU NEED THIS:_**
 > **ZFS is its own system in your system, and since ZFS is the best system we have for managing files and storage devices, it should also be allowed to use its own scheduler, so it is important that you apply this udev rule in your system.**
 
   - [**UDEV-RULE**](https://github.com/jimmykallhagen/nordix-zfs/tree/main/zfs-specific-udev-rules)
