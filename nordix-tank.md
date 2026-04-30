@@ -46,7 +46,7 @@ If you already have your system on an nvme you can create a zvol and use it as a
 ## **Nordix - Zpool Storage Guide**
 
  _**1️⃣**_
- - Locate your drives.
+ - **Locate your drives**
 
 ```Fish
 lslbk
@@ -112,7 +112,7 @@ The SATA SDD is:
 ---
 
 **_2️⃣_**
- - Erase the drives
+ - **Erase the drives**
 
 Erase:
 ```Fish
@@ -129,21 +129,75 @@ sudo wipefs -a --force /dev/sdd
 **_3️⃣_**
  - Disk By-Id
 
-  > According to the current ZFS documentation, they recommend not creating zpools with device /dev/sdX or /dev/nvmeX
-but it is recommended to use disk by-id, it is possible to use device name but it can cause problems.
-> 
- - Zpool create tank
+> According to the current ZFS documentation, they recommend not creating zpools with device /dev/sdX or /dev/nvmeX, but instead it is recommended to use disk by-id. It is possible to use device name but it can cause problems. Make it a practice to always create zpools with disk By-Id
+
+We use this command to display the disk by-id of our devices:
+```Fish
+ls -l --time-style=+ /dev/disk/by-id/ | grep sda
+```
+> If you have cleaned up your devices correctly as I showed before, only two options will appear when we run this command.
+> _I couldn't come up with a better way to sort out the different ids than what this command does, it's not perfect but good enough_ 
+
+**So for me it looks like this**
+
+ - HHD
+```Fish
+ls -l --time-style=+ /dev/disk/by-id/ | grep sda
+lrwxrwxrwx 1 root root  9  ata-HUH728080ALN600_2EHXRH1X -> ../../sda
+lrwxrwxrwx 1 root root  9  wwn-0x5000cca23bdb264d -> ../../sda
+```
+```Fish
+ls -l --time-style=+ /dev/disk/by-id/ | grep sdc
+lrwxrwxrwx 1 root root  9  ata-HUH728080ALN600_VJG1U0SX -> ../../sdc
+lrwxrwxrwx 1 root root  9  wwn-0x5000cca261c0d24f -> ../../sdc
+```
+```Fish
+ls -l --time-style=+ /dev/disk/by-id/ | grep sde
+lrwxrwxrwx 1 root root  9  ata-HUH728080ALN600_VJG1PJBX -> ../../sde
+lrwxrwxrwx 1 root root  9  wwn-0x5000cca261c0c52f -> ../../sde
+```
+ - SSD
+```Fish
+ls -l --time-style=+ /dev/disk/by-id/ | grep sdb
+lrwxrwxrwx 1 root root  9  ata-INTEL_SSDSC2CW120A3_CVCV430601BD120BGN -> ../../sdb
+lrwxrwxrwx 1 root root  9  wwn-0x55cd2e404bd41d9a -> ../../sdb
+```
+```Fish
+ls -l --time-style=+ /dev/disk/by-id/ | grep sdd
+lrwxrwxrwx 1 root root  9  ata-KINGSTON_SA400S37120G_50026B767B0067D9 -> ../../sdd
+lrwxrwxrwx 1 root root  9  wwn-0x50026b767b0067d9 -> ../../sdd
+```
+
+For SATA Devices it is "ata" that we will use. My list will then look like this
+```Fish
+ /dev/disk/by-id/ata-HUH728080ALN600_2EHXRH1X
+ /dev/disk/by-id/ata-HUH728080ALN600_VJG1U0SX
+ /dev/disk/by-id/ata-HUH728080ALN600_VJG1PJBX
+ /dev/disk/by-id/ata-INTEL_SSDSC2CW120A3_CVCV430601BD120BGN
+ /dev/disk/by-id/ata-KINGSTON_SA400S37120G_50026B767B0067D9
+```
+
+> _If you are not using SATA devices but perhaps NVME or USB, replace "ata" with nvme or usb._
+
+> _If you feel unsure about always using the terminal, it is also fine to use your file manager and then locate your drive in the directory /dev/disk/by-id/ and then copy the entire search path to it to use in the zpool creation._
+
+---
+
+**_4️⃣_**
+ - **Zpool create tank**
 
 > _This will create a fast Stripe hhd pool, make sure your hhd is in good condition and that it is okay. 
 
 > We set a number of options here that are not zpool options with -O, these are dataset options and we set them now so that all the datasets we create later inherit these options, this means that you do not need to set these options anymore than when creating this zpool. If you want other options or individual options on your datasets, it is perfectly possible to only set them on the current dataset and these options will then be overriden
 
 
+>⚠️
+> Remember to always set ashift correctly, modern NVME SSDs, SATA SDDs and HHDs usually always have 4k sectors, they lie to the system and can therefore show 512k, this is because Windows is really a legacy system and still runs today with the same kernel that was released in 1993. Therefore, you cannot trust what the system says that your device has for sectors, go to your manufacturer's website and check the specifications, however, it is very safe to believe that you have 4k sectors and there we set ashift=12, some of the very latest and sharpest NVME can have 8K sectors and then you set ashift=13
 
 
-An easy way to check this is to go to directory /dev/disk/by-id/
-and look for your current drive, copy it and use the full path in the zpool creation
-udevadm info -q symlink --path=/sys/block/sda | awk '{print "/dev/" $1}'
+
+
+
 Create zpool:
 ```Fish
 sudo zpool create -f -o ashift=12 \
