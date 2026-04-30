@@ -29,7 +29,7 @@ Nordix ZFS configuration and documentation.
 
 ### 6. - **Guide to create a Raid storage volyme with HHD's and Special vdev's** 
  - [**Nordix Storage Guide**](https://github.com/jimmykallhagen/nordix-zfs/blob/main/nordix-tank.md)
-
+ - [**Nordix Stripe and Raidz1 on same drives**](stripe-raidz1-setup.md)
 ### 7. - ** Depricated nordix zfs setup**
  - [**PRE-OpenZFS_2.2.0**](PRE-OpenZFS_2.2.0-nordix-zfs-config)||
  
