@@ -1,3 +1,5 @@
+![HHD](https://github.com/jimmykallhagen/nordix-zfs/blob/main/IMG_5369.jpeg)
+
 # ZPOOL - HHD
 
 **Part of:** [Nordix](https://github.com/jimmykallhagen/Nordix)  
