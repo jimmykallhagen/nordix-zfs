@@ -39,8 +39,13 @@ I recommend not using primarycache=all for a storage pool, it will fill up the A
 Instead I recommend using l2arc for hhd pools.
 
 If you already have your system on an nvme you can create a zvol and use it as a cache for HHD (l2arc).
+>_will add a guide to create a temporary l2arc for your storage pool later_
 
-locate your drives and clean them first, be sure to get the right one otherwise it will be wrong.
+---
+
+## **Nordix - Zpool Guide**
+
+1. locate your drives and clean them first, be sure to get the right device otherwise it will be wrong.
 
 locate:
 ```bash
