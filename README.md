@@ -28,7 +28,7 @@ Nordix ZFS configuration and documentation.
  - [**Nordix ZFS Monitors**](nordix-zfs-monitor.md)
 
 ### 6. - **Nordix ZFS Storage - Guide to create  Raid storage volyme with HHD's and Special vdev's, zvol setups, l2arc, slog and other custom setups,** 
- - [**Nordix ZFS Storage**](https://github.com/jimmykallhagen/nordix-zfs/blob/main/nordix-tank.md](https://github.com/jimmykallhagen/nordix-zfs-storage)
+ - [**Nordix ZFS Storage**](https://github.com/jimmykallhagen/nordix-zfs-storage)
 
 ### 7. - ** Depricated nordix zfs setup**
  - [**PRE-OpenZFS_2.2.0**](PRE-OpenZFS_2.2.0-nordix-zfs-config)||
