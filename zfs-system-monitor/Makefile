@@ -1,7 +1,7 @@
 CC = clang
 CFLAGS = `pkg-config --cflags gtk4 libadwaita-1 gtk4-layer-shell-0` -O3
 LIBS = `pkg-config --libs gtk4 libadwaita-1 gtk4-layer-shell-0` -lm
-TARGET = zfs-arc-monitor-layer
+TARGET = zfs-system-monitor-layer
 SRC = zfs-system-monitor.c
 
 all: $(TARGET)
