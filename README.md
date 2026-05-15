@@ -10,7 +10,7 @@
 Nordix ZFS configuration and documentation.
 
 ### 1.  **Dataset hierarchy and settings**
- - [**Nordix-ZFS-Dataset**]([/nordix-zfs-dataset/](https://github.com/jimmykallhagen/nordix-zfs/blob/main/PRE-OpenZFS_2.2.0-nordix-zfs-config/nordix-zfs-dataset/README.md)) (Needs to updated, some changes has happends)
+ - [**Nordix-ZFS-Dataset**](https://github.com/jimmykallhagen/nordix-zfs/blob/main/PRE-OpenZFS_2.2.0-nordix-zfs-config/nordix-zfs-dataset/README.md) (Needs to updated, some changes has happends)
  
 ### 2. - **Kernel module parameters**
  - [**Nordix-ZFS-Config**](/nordix-zfs-config/)
