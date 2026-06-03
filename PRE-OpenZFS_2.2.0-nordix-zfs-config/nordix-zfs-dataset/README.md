@@ -325,29 +325,43 @@ Media files are typically read once (playback) and don't benefit from caching. S
 
 ---
 
-### Gaming Datasets
+## Gaming Datasets
 
-Purpose-built for Steam, Lutris, and Wine gaming.
+### Purpose-built for Steam, Lutris, and Wine gaming.
 
-#### Game Installations (`nordix/home/local/steam/game`)
-```bash
+> **Snapshot behavior:** Excluded. Games are 50-150 GB each — snapshots would explode storage. Re-download if needed
+
+### Game Installations (`nordix/home/local/steam/game`)
+```Fish
 -o compression=zstd-4    # Moderate compression
 -o recordsize=1M         # Large game assets
 -o primarycache=all      # Cache frequently-loaded textures
 ```
+For Steam (Proton), Lutris, and Wine-prefix datasets, set:
 
-**Snapshot behavior:** Excluded. Games are 50-150 GB each — snapshots would explode storage. Re-download if needed.
+```Fish
+-o casesensitivity=insensitive nordix/home/local/steam
+-o casesensitivity=insensitive nordix/home/local/lutris
+-o asesensitivity=insensitive nordix/home/wine-prefix
+```
+> Why? Windows applications expect case-insensitive filesystems. Without this setting,
+some games and mods may crash or fail to load files. This property must be set at
+dataset creation and cannot be changed later.
+</br>
+> Important: Only apply to Windows/gaming datasets. System datasets and
+documents should remain casesensitivity=sensitive (default).
+.
 
-#### Proton/Wine Compatibility Tools
-```bash
+### Proton/Wine Compatibility Tools
+```Fish
 -o compression=zstd-5
 -o recordsize=32K
 ```
 
 **Snapshot behavior:** Rollback broken Proton versions.
 
-#### Shader Cache
-```bash
+### Shader Cache
+```Fish
 -o compression=zstd-5
 -o recordsize=16K        # Small compiled shader files
 -o checksum=fletcher2    # Fast integrity check
@@ -355,8 +369,8 @@ Purpose-built for Steam, Lutris, and Wine gaming.
 
 **Snapshot behavior:**  Excluded. Shader caches rebuild automatically.
 
-#### Save Games (`~/Games`, `~/Wine-prefix`)
-```bash
+### Save Games (`~/Games`, `~/Wine-prefix`)
+```Fish
 -o compression=zstd-4
 -o recordsize=32K-1M     # Varies by dataset
 -o copies=1
